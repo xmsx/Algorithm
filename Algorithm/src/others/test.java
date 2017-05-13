@@ -29,7 +29,6 @@ public class test {
 //		System.out.println(s=="zxc");
 		int[] a = {1,2,3,2,2,2,5,4,2};
 		String s = "123123";
-		s.
 		System.out.println(MoreThanHalfNum_Solution(a));
 	}
 
