@@ -6,25 +6,24 @@ package binarytree;
  * 要求不能创建任何新的结点，只能调整树中结点指针的指向。
  */
 public class ConvertTree {
-    protected TreeNode leftLast = null;
+	TreeNode head = null;
+    TreeNode realHead = null;
     public TreeNode Convert(TreeNode root) {
-        if(root==null)
-            return null;
-        if(root.left==null&&root.right==null){
-            leftLast = root;
-            return root;
+        ConvertSub(root);
+        return realHead;
+    }
+     
+    private void ConvertSub(TreeNode root) {
+        if(root==null) return;
+        ConvertSub(root.left);
+        if (head == null) {
+            head = root;
+            realHead = root;
+        } else {
+            head.right = root;
+            root.left = head;
+            head = root;
         }
-        TreeNode left = Convert(root.left);
-        if(left!=null){
-            leftLast.right = root;
-            root.left = leftLast;
-        }
-        leftLast = root;
-        TreeNode right = Convert(root.right);
-        if(right!=null){
-            right.left = root;
-            root.right = right;
-        }
-        return left!=null?left:root;       
+        ConvertSub(root.right);
     }
 }
