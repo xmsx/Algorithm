@@ -27,9 +27,52 @@ public class test {
 //		System.out.println(s);
 //		String s =new String("zxc");
 //		System.out.println(s=="zxc");
-		int[] a = {1,2,3,2,2,2,5,4,2};
-		String s = "123123";
-		System.out.println(MoreThanHalfNum_Solution(a));
+		int[] a = {3,32,321};
+//		String s = "123123";
+//		System.out.println(MoreThanHalfNum_Solution(a));
+		String[] s = {"321","32","3"};
+		Arrays.sort(s);
+		System.out.println( s[1] );
+		System.out.println(PrintMinNumber(a));
+		
+	}
+	public int FirstNotRepeatingChar(String str) {
+		if(str.length()==0)return -1;
+        char[] c = str.toCharArray();
+        int l = c.length;
+        HashMap<Character,Integer> map = new HashMap<Character,Integer>();
+        for(int i=0;i<l;i++){
+            char key = c[i];
+            if(!map.containsKey(key)){
+				map.put(key, 1);
+			}else{
+				int val = map.get(key)+1;
+				map.put(key,val);
+			}
+        }
+        int ans = 100000;
+        Iterator<Entry<Character, Integer>> i = map.entrySet().iterator();
+        while(i.hasNext()){
+            Map.Entry<Character, Integer> e = (Map.Entry<Character, Integer>) i.next();
+			//System.out.println(e.getKey()+":"+e.getValue());
+			if(e.getValue()==1){
+				ans = Math.min(ans,str.indexOf(e.getKey().toString()));
+			}	
+        }
+        return ans;
+    }
+	private static String PrintMinNumber(int[] a) {
+		// TODO Auto-generated method stub
+		String[] s = new String[a.length];
+		for(int i=0;i<a.length;i++){
+            s[i] = String.valueOf(a[i]);
+        }
+		Arrays.sort(s);
+		String ans = new String();
+		for(int i=0;i<a.length;i++){
+			ans += s[i];
+		}
+		return ans;
 	}
 
 	private static String bbb(StringBuilder sb) {
@@ -47,6 +90,10 @@ public class test {
 				map.put(key,val);
 			}
 		}
+//		Set keyset = map.keySet();
+//		Iterator<Integer> it = keyset.iterator();
+//		Set<Entry<Integer,Integer>> me = map.entrySet();
+//		Iterator<Entry<Integer,Integer>> it = me.iterator();
 		Iterator<Entry<Integer, Integer>> i = map.entrySet().iterator();
 		while(i.hasNext()){
 			Map.Entry<Integer, Integer> e = (Map.Entry<Integer, Integer>) i.next();
