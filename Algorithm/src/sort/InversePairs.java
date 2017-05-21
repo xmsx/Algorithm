@@ -1,4 +1,7 @@
 package sort;
+
+import java.util.Scanner;
+
 /**
  * 数组中的逆序对
  * @author MFS
@@ -16,7 +19,7 @@ package sort;
  */
 public class InversePairs {
 	
-    public static int InversePairs(int [] array) {
+    public static long InversePairs(int [] array) {
         if(array==null||array.length==0)
         {
             return 0;
@@ -26,7 +29,7 @@ public class InversePairs {
         {
             copy[i] = array[i];
         }
-        int count = InversePairsCore(array,copy,0,array.length-1);//数值过大求余
+        long count = InversePairsCore(array,copy,0,array.length-1);//数值过大求余
         return count;
           
     }
@@ -75,7 +78,12 @@ public class InversePairs {
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int[] array = new int[n];
+		for(int i=0;i<n;i++){
+			array[i] = in.nextInt();
+		}
+		System.out.println(InversePairs(array));
 	}
-
 }
