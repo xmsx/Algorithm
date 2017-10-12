@@ -1,16 +1,26 @@
-package dp;
+package test;
 
 import java.util.Scanner;
 
-public class LCS {
+public class _13È¥ÄÄ¶ù2 {
 	public static void main(String[] args){
 		Scanner in = new Scanner(System.in);
 		String str1 = in.nextLine();
 		char[] s1 = str1.toCharArray();
-		String str2 = in.next();
-		char[] s2 = str2.toCharArray();
+		String[] sc = str1.split(" ");
+		StringBuffer str2 = new StringBuffer();
+		for(int i = sc.length-1;i>0;i--) {
+			str2.append(sc[i]);
+			str2.append(' ');
+		}
+		str2.append(sc[0]);
+		System.out.println(str2.toString());
+		char[] s2 = str2.toString().toCharArray();
 		System.out.println(lcs(s1,s2));
  	}
+	public static String reverse(String str){  
+        return new StringBuilder(str).reverse().toString();  
+    }
 	public static int lcs(char[] s1,char[] s2){
 		int[][] dp = new int[100][100];
 		int[][] s = new int[100][100];
@@ -33,7 +43,6 @@ public class LCS {
 				}
 			}
 		}
-		System.out.println("------");
 		int ans=dp[m][n],k=dp[m][n];
 		char[] z = new char[100];
 		while(m>0&&n>0){
@@ -45,10 +54,10 @@ public class LCS {
 			}else if(s[m][n]==2)n--;
 			else m--;
 		}
-		for(int i=1;i<=ans;i++){
-			System.out.print(z[i]);
-		}
-		System.out.println();
+//		for(int i=1;i<=ans;i++){
+//			System.out.print(z[i]);
+//		}
+//		System.out.println();
 		return ans;
 	}
 }

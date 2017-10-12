@@ -22,7 +22,7 @@ public class LIS {
 		System.out.println(lis(a));
 	}
 	/**
-	 * 二分查找 d[] 中第一个  >=x 的值，返回其下标。相当于c++中upper_bound
+	 * 二分查找 d[] 中第一个  >x 的值，返回其下标。相当于c++中upper_bound
 	 * @param d 
 	 * 			被寻找数组
 	 * @param x	
@@ -37,13 +37,13 @@ public class LIS {
 		int m;
 		while(l<r){
 			m = (l+r)>>1;
-			if(d[m]>x) r=m-1;
+			if(d[m]>x) r=m;
 			else l=m+1;
 		}
 		return l;
 	}
 	/**
-	 * 二分查找 d[] 中第一个  >x 的值，返回其下标。相当于c++中lower_bound
+	 * 二分查找 d[] 中第一个  >=x 的值，返回其下标。相当于c++中lower_bound
 	 * @param d 
 	 * 			被寻找数组
 	 * @param x	
